@@ -1,13 +1,6 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "metadata": {
-    "_generator": {
-      "name": "bicep",
-      "version": "0.3.255.40792",
-      "templateHash": "14804106350601198061"
-    }
-  },
   "parameters": {
     "ApplicationInsightsName": {
       "type": "string",
@@ -310,7 +303,8 @@
             "containerName": "[parameters('ContainerName')]"
           }
         },
-        "enableFileUploadNotifications": true
+        "enableFileUploadNotifications": true,
+        "features": "GWV2"
       },
       "sku": {
         "name": "S1",
@@ -531,6 +525,13 @@
     "instrumentationKey": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.Insights/components', parameters('ApplicationInsightsName')), '2015-05-01').InstrumentationKey]"
+    }
+  },
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.3.1.62928",
+      "templateHash": "506039609844770649"
     }
   }
 }

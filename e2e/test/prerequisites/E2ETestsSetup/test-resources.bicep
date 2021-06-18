@@ -207,6 +207,7 @@ resource iotHub 'Microsoft.Devices/IotHubs@2021-03-03-preview' = {
       }
     }
     enableFileUploadNotifications: true
+    features: 'GWV2'
   }
   sku: {
     name: 'S1'
