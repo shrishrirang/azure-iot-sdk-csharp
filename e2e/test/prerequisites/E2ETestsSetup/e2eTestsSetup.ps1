@@ -448,13 +448,6 @@ $msiResourceId = "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroup/p
 az role assignment create --assignee $msiPrincipalId --role 'Storage Blob Data Contributor' --scope $resourceGroupId --output none
 
 ##################################################################################################################################
-# Granting the iot hub system idenitty Storage blob contributor access on the resoruce group
-##################################################################################################################################
-Write-Host "`nGranting the system identity on the hub $iotHubName Storage Blob Data Contributor permissions on resource group: $ResourceGroup."
-$systemIdentityPrincipal = az resource list -n $iotHubName --query [0].identity.principalId --out tsv
-az role assignment create --assignee $systemIdentityPrincipal --role "Storage Blob Data Contributor" --scope $resourceGroupId --output none
-
-##################################################################################################################################
 # Uploading ROOT CA certificate to IoTHub and verifying
 ##################################################################################################################################
 

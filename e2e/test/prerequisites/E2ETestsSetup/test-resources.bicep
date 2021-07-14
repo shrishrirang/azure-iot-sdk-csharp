@@ -170,12 +170,6 @@ resource userAssignedManagedIdentity 'Microsoft.ManagedIdentity/userAssignedIden
 resource iotHub 'Microsoft.Devices/IotHubs@2021-03-03-preview' = {
   name: HubName
   location: resourceGroup().location
-  identity: {
-    type: 'SystemAssigned, UserAssigned'
-    userAssignedIdentities: {
-      '${userAssignedManagedIdentity.id}' : {}
-    }
-  }
   properties: {
     eventHubEndpoints: {
       events: {
