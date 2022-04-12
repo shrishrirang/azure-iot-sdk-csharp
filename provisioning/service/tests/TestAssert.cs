@@ -6,15 +6,13 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
+using System.Threading.Tasks;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Microsoft.Azure.Devices.Provisioning.Service.Test
 {
-    using System;
-    using System.Globalization;
-    using System.Threading.Tasks;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     public static class TestAssert
     {
         public static TException Throws<TException>(Action action, string errorMessage = null) where TException : Exception
