@@ -3,7 +3,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Diagnostics.Tracing;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Iothub.Service
             using TestDevice testDevice = await TestDevice.GetTestDeviceAsync(Logger, DevicePrefix).ConfigureAwait(false);
             var options = new ServiceClientOptions
             {
-                SdkAssignsMessageId = Shared.SdkAssignsMessageId.Never,
+                SdkAssignsMessageId = SdkAssignsMessageId.Never,
             };
             using var sender = ServiceClient.CreateFromConnectionString(TestConfiguration.IoTHub.ConnectionString, options);
             string messageId = Guid.NewGuid().ToString();
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Iothub.Service
             using TestDevice testDevice = await TestDevice.GetTestDeviceAsync(Logger, DevicePrefix).ConfigureAwait(false);
             var options = new ServiceClientOptions
             {
-                SdkAssignsMessageId = Shared.SdkAssignsMessageId.WhenUnset,
+                SdkAssignsMessageId = SdkAssignsMessageId.WhenUnset,
             };
             using var sender = ServiceClient.CreateFromConnectionString(TestConfiguration.IoTHub.ConnectionString, options);
             string messageId = Guid.NewGuid().ToString();

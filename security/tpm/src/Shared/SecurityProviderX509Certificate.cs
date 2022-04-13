@@ -3,7 +3,7 @@
 
 using System.Security.Cryptography.X509Certificates;
 
-namespace Microsoft.Azure.Devices.Shared
+namespace Microsoft.Azure.Devices.Provisioning.Security
 {
     /// <summary>
     /// The Device Security Client for X509 authentication using a certificate object.

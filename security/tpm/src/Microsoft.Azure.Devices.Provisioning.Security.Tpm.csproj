@@ -59,11 +59,4 @@
 
     <!-- FXCop -->
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="$(RootDir)\shared\src\Microsoft.Azure.Devices.Shared.csproj">
-      <Project>{91dfb837-d8a3-4f54-ae0d-45c95acd0c2a}</Project>
-      <Name>Microsoft.Azure.Devices.Shared.NetStandard</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>

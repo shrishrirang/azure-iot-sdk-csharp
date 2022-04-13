@@ -4,11 +4,13 @@
 using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Microsoft.Azure.Devices.Provisioning.Client;
 using Microsoft.Azure.Devices.Provisioning.Client.Transport;
 using Microsoft.Azure.Devices.Provisioning.Service;
-using Microsoft.Azure.Devices.Shared;
+using Microsoft.Azure.Devices.Provisioning.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using DpsClient = Microsoft.Azure.Devices.Provisioning.Client;
+using DpsService = Microsoft.Azure.Devices.Provisioning.Service;
 
 namespace Microsoft.Azure.Devices.E2ETests.Provisioning
 {
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Provisioning
         [LoggedTestMethod]
         public async Task ProvisioningDeviceClient_RegisterAsyncInvalidServiceCertificateAmqpTcp_Fails()
         {
-            using var transport = new ProvisioningTransportHandlerAmqp(TransportFallbackType.TcpOnly);
+            using var transport = new ProvisioningTransportHandlerAmqp(DpsClient.TransportFallbackType.TcpOnly);
             ProvisioningTransportException exception = await Assert.ThrowsExceptionAsync<ProvisioningTransportException>(
                 () => TestInvalidServiceCertificate(transport)).ConfigureAwait(false);
 
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Provisioning
         [LoggedTestMethod]
         public async Task ProvisioningDeviceClient_RegisterAsyncInvalidServiceCertificateMqttTcp_Fails()
         {
-            using var transport = new ProvisioningTransportHandlerMqtt(TransportFallbackType.TcpOnly);
+            using var transport = new ProvisioningTransportHandlerMqtt(DpsClient.TransportFallbackType.TcpOnly);
             ProvisioningTransportException exception = await Assert.ThrowsExceptionAsync<ProvisioningTransportException>(
                 () => TestInvalidServiceCertificate(transport)).ConfigureAwait(false);
 
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Provisioning
         [LoggedTestMethod]
         public async Task ProvisioningDeviceClient_RegisterAsyncInvalidServiceCertificateAmqpWs_Fails()
         {
-            using var transport = new ProvisioningTransportHandlerAmqp(TransportFallbackType.WebSocketOnly);
+            using var transport = new ProvisioningTransportHandlerAmqp(DpsClient.TransportFallbackType.WebSocketOnly);
             ProvisioningTransportException exception = await Assert.ThrowsExceptionAsync<ProvisioningTransportException>(
                 () => TestInvalidServiceCertificate(transport)).ConfigureAwait(false);
 
@@ -89,7 +91,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Provisioning
         [LoggedTestMethod]
         public async Task ProvisioningDeviceClient_RegisterAsyncInvalidServiceCertificateMqttWs_Fails()
         {
-            using var transport = new ProvisioningTransportHandlerMqtt(TransportFallbackType.WebSocketOnly);
+            using var transport = new ProvisioningTransportHandlerMqtt(DpsClient.TransportFallbackType.WebSocketOnly);
             ProvisioningTransportException exception = await Assert.ThrowsExceptionAsync<ProvisioningTransportException>(
                 () => TestInvalidServiceCertificate(transport)).ConfigureAwait(false);
 
@@ -99,8 +101,8 @@ namespace Microsoft.Azure.Devices.E2ETests.Provisioning
         private static async Task TestInvalidServiceCertificate(ProvisioningTransportHandler transport)
         {
             using X509Certificate2 cert = TestConfiguration.Provisioning.GetIndividualEnrollmentCertificate();
-            using var security = new SecurityProviderX509Certificate(cert);
-            var provisioningDeviceClient = ProvisioningDeviceClient.Create(
+            using var security = new DpsClient.SecurityProviderX509Certificate(cert);
+            var provisioningDeviceClient = DpsClient.ProvisioningDeviceClient.Create(
                 TestConfiguration.Provisioning.GlobalDeviceEndpointInvalidServiceCertificate,
                 "0ne00000001",
                 security,

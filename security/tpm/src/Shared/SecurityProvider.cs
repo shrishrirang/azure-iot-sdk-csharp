@@ -3,7 +3,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Devices.Shared
+namespace Microsoft.Azure.Devices.Provisioning.Security
 {
     /// <summary>
     /// The Security Provider used by ProvisioningDeviceClient for authentication.

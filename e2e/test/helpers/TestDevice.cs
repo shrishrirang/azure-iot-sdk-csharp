@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Helpers
             {
                 requestDevice.Authentication = new AuthenticationMechanism
                 {
-                    X509Thumbprint = new X509Thumbprint
+                    X509Thumbprint = new Devices.X509Thumbprint
                     {
                         PrimaryThumbprint = TestConfiguration.IoTHub.GetCertificateWithPrivateKey().Thumbprint
                     }

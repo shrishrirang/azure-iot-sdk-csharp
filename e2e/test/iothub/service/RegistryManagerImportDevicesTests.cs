@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Iothub.Service
                         new ExportImportDevice(
                             new Device(deviceId)
                             {
-                                Authentication = new AuthenticationMechanism { Type = AuthenticationType.Sas }
+                                Authentication = new AuthenticationMechanism { Type = Devices.AuthenticationType.Sas }
                             },
                             ImportMode.Create),
                     });

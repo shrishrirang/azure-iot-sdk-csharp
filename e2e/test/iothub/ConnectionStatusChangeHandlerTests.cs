@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Devices.E2ETests
                 Client.TransportType.Amqp_Tcp_Only, async (r, d) =>
                 {
                     Device device = await r.GetDeviceAsync(d).ConfigureAwait(false);
-                    device.Status = DeviceStatus.Disabled;
+                    device.Status = Devices.DeviceStatus.Disabled;
                     await r.UpdateDeviceAsync(device).ConfigureAwait(false);
                 }).ConfigureAwait(false);
         }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Devices.E2ETests
 
                 // Receiving the module twin should succeed right now.
                 Logger.Trace($"{nameof(DeviceClient_Gives_ConnectionStatus_DeviceDisabled_Base)}: DeviceClient GetTwinAsync.");
-                Shared.Twin twin = await deviceClient.GetTwinAsync().ConfigureAwait(false);
+                Client.Twin twin = await deviceClient.GetTwinAsync().ConfigureAwait(false);
                 Assert.IsNotNull(twin);
 
                 // Delete/disable the device in IoT Hub. This should trigger the ConnectionStatusChangesHandler.
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Devices.E2ETests
 
                 // Receiving the module twin should succeed right now.
                 Logger.Trace($"{nameof(ModuleClient_Gives_ConnectionStatus_DeviceDisabled_Base)}: ModuleClient GetTwinAsync.");
-                Shared.Twin twin = await moduleClient.GetTwinAsync().ConfigureAwait(false);
+                Client.Twin twin = await moduleClient.GetTwinAsync().ConfigureAwait(false);
                 Assert.IsNotNull(twin);
 
                 // Delete/disable the device in IoT Hub.

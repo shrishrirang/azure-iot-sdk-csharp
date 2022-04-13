@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace Microsoft.Azure.Devices.Shared
+namespace Microsoft.Azure.Devices.Provisioning.Security
 {
     /// <summary>
     /// The Device Security Provider interface for TPM Hardware Security Modules.

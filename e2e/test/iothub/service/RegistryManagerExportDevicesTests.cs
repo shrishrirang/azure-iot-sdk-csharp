@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Devices.E2ETests.Iothub.Service
                     .AddDeviceAsync(
                         new Device(edgeId1)
                         {
-                            Authentication = new AuthenticationMechanism { Type = AuthenticationType.Sas },
-                            Capabilities = new Shared.DeviceCapabilities { IotEdge = true },
+                            Authentication = new AuthenticationMechanism { Type = Devices.AuthenticationType.Sas },
+                            Capabilities = new DeviceCapabilities { IotEdge = true },
                         })
                     .ConfigureAwait(false);
 
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Devices.E2ETests.Iothub.Service
                     .AddDeviceAsync(
                         new Device(edgeId2)
                         {
-                            Authentication = new AuthenticationMechanism { Type = AuthenticationType.Sas },
-                            Capabilities = new Shared.DeviceCapabilities { IotEdge = true },
+                            Authentication = new AuthenticationMechanism { Type = Devices.AuthenticationType.Sas },
+                            Capabilities = new DeviceCapabilities { IotEdge = true },
                             ParentScopes = { edge1.Scope },
                         })
                     .ConfigureAwait(false);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Devices.E2ETests.Iothub.Service
                     .AddDeviceAsync(
                         new Device(deviceId)
                         {
-                            Authentication = new AuthenticationMechanism { Type = AuthenticationType.Sas },
+                            Authentication = new AuthenticationMechanism { Type = Devices.AuthenticationType.Sas },
                             Scope = edge1.Scope,
                         })
                     .ConfigureAwait(false);
