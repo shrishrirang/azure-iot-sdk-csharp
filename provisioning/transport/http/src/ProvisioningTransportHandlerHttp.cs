@@ -104,6 +104,12 @@ namespace Microsoft.Azure.Devices.Provisioning.Client.Transport
                     // When revisiting TLS12 work for DPS, we should figure out why. Perhaps the service needs to support it.	
 
                     //SslProtocols = TlsVersions.Preferred,
+
+                    // Uncomment this to ignore certificate errors
+                    //ServerCertificateCustomValidationCallback = (a,b,c,d) =>
+                    //{
+                    //    return true;
+                    //},
                 };
 
                 if (Proxy != DefaultWebProxySettings.Instance)

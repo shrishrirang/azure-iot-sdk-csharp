@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Devices.Provisioning.Client.Transport
         private const int MaxMessageSize = 256 * 1024;
 
         private const int MqttTcpPort = 8883;
-        private const int ReadTimeoutSeconds = 60;
+
+        // Set a high value to avoid errors during debugging
+        private const int ReadTimeoutSeconds = 10*60;
 
         private const string WsMqttSubprotocol = "mqtt";
         private const string WsScheme = "wss";

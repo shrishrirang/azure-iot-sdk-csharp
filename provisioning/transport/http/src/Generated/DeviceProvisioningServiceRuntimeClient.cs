@@ -215,6 +215,12 @@ namespace Microsoft.Azure.Devices.Provisioning.Client.Transport
         /// </summary>
         private void Initialize()
         {
+            // Uncomment this to ignore certificate errors
+            //this.HttpClientHandler.ServerCertificateCustomValidationCallback = (sender, certificate, chain, errors) =>
+            //{
+            //    return true;
+            //};
+
             RuntimeRegistration = new RuntimeRegistration(this);
             SerializationSettings = new JsonSerializerSettings
             {
